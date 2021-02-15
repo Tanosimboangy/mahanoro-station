@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
             font-size: 24px;
             text-align: center;
             text-transform: uppercase;
-            width: 200px;
+            width: 205px;
             box-sizing: border-box;
             a {
                 color: #FFFFFF;

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { setNextTrip } from '../actions';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import  NextToTrip from '../components/NextToTrips';
+import { setNextTrip } from '../actions';
 
 
 function NextToTrips() {
     const { destination} = useParams();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const data = useSelector(state => state.data);
     const nextTrips = useSelector(state => state.nextTrips);
     const nextDestination = data !== [] && data.filter(item => item.destination === destination);

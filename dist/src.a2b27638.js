@@ -36290,7 +36290,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.gettingData = gettingData;
 exports.setNextTrip = setNextTrip;
-exports.bookingSeat = bookingSeat;
+exports.setBookingSeat = setBookingSeat;
 
 function gettingData() {
   return async dispatch => {
@@ -36310,9 +36310,9 @@ function setNextTrip(item) {
   };
 }
 
-function bookingSeat(item) {
+function setBookingSeat(item) {
   return {
-    type: "BOOKING_SEATS",
+    type: "SET_BOOKING_SEATS",
     payload: item
   };
 }
@@ -38272,7 +38272,7 @@ const Wrapper = _styledComponents.default.div`
             font-size: 24px;
             text-align: center;
             text-transform: uppercase;
-            width: 200px;
+            width: 205px;
             box-sizing: border-box;
             a {
                 color: #FFFFFF;
@@ -38620,13 +38620,13 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _actions = require("../actions");
-
 var _reactRouterDom = require("react-router-dom");
 
 var _reactRedux = require("react-redux");
 
 var _NextToTrips = _interopRequireDefault(require("../components/NextToTrips"));
+
+var _actions = require("../actions");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38664,7 +38664,11 @@ function NextToTrips() {
 
 var _default = NextToTrips;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../actions":"src/actions/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../components/NextToTrips":"src/components/NextToTrips/index.js"}],"src/containers/BookingSeats.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../components/NextToTrips":"src/components/NextToTrips/index.js","../actions":"src/actions/index.js"}],"design/available_seat.png":[function(require,module,exports) {
+module.exports = "/available_seat.19deb6f8.png";
+},{}],"design/booked_seat.png":[function(require,module,exports) {
+module.exports = "/booked_seat.7343e1db.png";
+},{}],"src/containers/BookingSeats.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38674,11 +38678,17 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _actions = require("../actions");
-
 var _reactRouterDom = require("react-router-dom");
 
 var _reactRedux = require("react-redux");
+
+var _actions = require("../actions");
+
+var _available_seat = _interopRequireDefault(require("../../design/available_seat.png"));
+
+var _booked_seat = _interopRequireDefault(require("../../design/booked_seat.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -38687,31 +38697,31 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function BookingSeats() {
   const dispatch = (0, _reactRedux.useDispatch)();
   const {
-    destination,
-    seatsId
+    seatId
   } = (0, _reactRouterDom.useParams)();
-  console.log(destination);
   const data = (0, _reactRedux.useSelector)(state => state.data);
-  console.log(data);
   const bookingSeat = (0, _reactRedux.useSelector)(state => state.bookingSeat);
-  console.log(bookingSeat); // const bookingSeatDetails = bookingSeats.filter((item) => item.id === seatId);
-  // console.log(bookingSeatDetails);
-  // useEffect(() => {
-  //     dispatch(bookingSeats(bookingSeatDetails));
-  // }, [])
-  // const bookingSeat = useSelector((state) => state.bookingSeat);
-  // console.log(bookingSeats);
-  // console.log(bookingSeatDetails);
-  // useEffect(() => {
-  //     dispatch(setBookingSeats(bookingSeatDetails))
-  // }, [])
-
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Book a seat to: ", destination), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "PICK A SEAT"), /*#__PURE__*/_react.default.createElement("p", null, "TRIP INFORMATION")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, "seats images"), /*#__PURE__*/_react.default.createElement("div", null, "seats details"))));
+  const bookingSeatDetails = data.filter(item => item.id == seatId);
+  (0, _react.useEffect)(() => {
+    dispatch((0, _actions.setBookingSeat)(bookingSeat));
+  }, [data]);
+  console.log(bookingSeatDetails);
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Book a seat to: "), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "PICK A SEAT"), /*#__PURE__*/_react.default.createElement("p", null, "TRIP INFORMATION")), /*#__PURE__*/_react.default.createElement("div", null, bookingSeatDetails.map(item => /*#__PURE__*/_react.default.createElement(_react.Fragment, {
+    key: item.id
+  }, /*#__PURE__*/_react.default.createElement("div", null, item.seats.map(items => {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: items.id
+    }, items.available = "true" ? /*#__PURE__*/_react.default.createElement("img", {
+      src: _available_seat.default
+    }) : /*#__PURE__*/_react.default.createElement("img", {
+      src: _booked_seat.default
+    }));
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Departure time:  ", item.departureTime), /*#__PURE__*/_react.default.createElement("p", null, "Driver:  ", item.driverName), /*#__PURE__*/_react.default.createElement("p", null, "Driver's contact:  ", item.driverContact), /*#__PURE__*/_react.default.createElement("p", null, "Estimated duration: :  ", item.estimatedDuration), /*#__PURE__*/_react.default.createElement("p", null, "Break:  ", item.breaks)))))));
 }
 
 var _default = BookingSeats;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../actions":"src/actions/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../actions":"src/actions/index.js","../../design/available_seat.png":"design/available_seat.png","../../design/booked_seat.png":"design/booked_seat.png"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38793,17 +38803,19 @@ function data(state = [], action) {
   }
 }
 
-function myAccount(state = [], action) {
-  return state;
-}
-
 function nextTrips(state = [], action) {
-  return state;
+  switch (action.type) {
+    case "SET_NEXT_TRIPS":
+      return [...state, action.payload];
+
+    default:
+      return state;
+  }
 }
 
 function bookingSeat(state = [], action) {
   switch (action.type) {
-    case "BOOKING_SEATS":
+    case "SET_BOOKING_SEATS":
       return [...state, action.payload];
 
     default:
@@ -38814,8 +38826,7 @@ function bookingSeat(state = [], action) {
 var _default = (0, _redux.combineReducers)({
   data,
   nextTrips,
-  bookingSeat,
-  myAccount
+  bookingSeat
 });
 
 exports.default = _default;
@@ -38829,8 +38840,7 @@ exports.default = void 0;
 var _default = {
   data: [],
   nextTrips: [],
-  bookingSeat: [],
-  myAccount: []
+  bookingSeat: []
 };
 exports.default = _default;
 },{}],"src/store.js":[function(require,module,exports) {
@@ -38941,7 +38951,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65491" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56955" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

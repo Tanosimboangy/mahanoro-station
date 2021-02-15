@@ -1,45 +1,51 @@
-import React, { useEffect } from 'react';
-import {  } from '../actions';
-import { bookingSeats } from '../actions';
+import React, { Fragment, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { setBookingSeat } from '../actions';
+import availableSeat from '../../design/available_seat.png';
+import bookedSeat from '../../design/booked_seat.png';
+
 
 function BookingSeats() {
     const dispatch = useDispatch();
-
-    const { destination, seatsId} = useParams();
-    console.log(destination);
-
+    const {seatId} = useParams();
     const data = useSelector(state => state.data);
-    console.log(data);
     const bookingSeat = useSelector(state => state.bookingSeat);
-    console.log(bookingSeat);
-
-    // const bookingSeatDetails = bookingSeats.filter((item) => item.id === seatId);
-    // console.log(bookingSeatDetails);
-
-    // useEffect(() => {
-    //     dispatch(bookingSeats(bookingSeatDetails));
-    // }, [])
-
-    // const bookingSeat = useSelector((state) => state.bookingSeat);
-    // console.log(bookingSeats);
-    // console.log(bookingSeatDetails);
-    // useEffect(() => {
-    //     dispatch(setBookingSeats(bookingSeatDetails))
-    // }, [])
+    const bookingSeatDetails = data.filter(item => item.id == seatId);
+    useEffect(() => {
+        dispatch(setBookingSeat(bookingSeat));
+    }, [data])
+    console.log(bookingSeatDetails);
 
     return (
         <div>
-            <h2>Book a seat to: {destination}</h2>
+            <h2>Book a seat to: </h2>
             <div>
                 <div>
                     <p>PICK A SEAT</p>
                     <p>TRIP INFORMATION</p>
                 </div>
                 <div>
-                    <div>seats images</div>
-                    <div>seats details</div>
+                    {bookingSeatDetails.map(item => 
+                        <Fragment key={item.id}>
+                            <div>
+                                {item.seats.map(items => {
+                                    return (
+                                        <div key={items.id}>
+                                            {items.available = "true" ? <img src={availableSeat} /> : <img src={bookedSeat} />}
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <div>
+                                <p>Departure time:  {item.departureTime}</p>
+                                <p>Driver:  {item.driverName}</p>
+                                <p>Driver's contact:  {item.driverContact}</p>
+                                <p>Estimated duration: :  {item.estimatedDuration}</p>
+                                <p>Break:  {item.breaks}</p>
+                            </div>
+                        </Fragment>
+                    )}
                 </div>
             </div>
         </div>

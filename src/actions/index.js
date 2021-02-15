@@ -15,9 +15,9 @@ export function setNextTrip(item) {
     }
 }
 
-export function bookingSeat(item) {
+export function setBookingSeat(item) {
     return {
-        type: "BOOKING_SEATS",
+        type: "SET_BOOKING_SEATS",
         payload: item
     }
 }
