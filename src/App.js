@@ -2,6 +2,8 @@ import React from 'react'
 import { Route, Switch } from 'react-router'
 import Home from './containers/HomePage';
 import Header from './containers/Header';
+import NextToTrip from './containers/NextToTrip';
+import BookingSeats from './containers/BookingSeats';
 
 export default function App() {
     return (
@@ -15,7 +17,10 @@ export default function App() {
                     <h1>My Account</h1>
                 </Route>
                 <Route path={`/destination/:destination`}>
-                    <h1>Destination</h1>
+                    <NextToTrip />
+                </Route>
+                <Route path={`/trip/:seatId`}>
+                    <BookingSeats />
                 </Route>
             </Switch>
         </div>

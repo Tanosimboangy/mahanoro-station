@@ -10,7 +10,7 @@ export const Wrapper = styled.header`
     flex-direction: row;
     justify-content: space-between;
     padding: 30px 18px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     h2 {
         a {
             font-size: 30px;

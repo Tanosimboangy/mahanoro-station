@@ -11,12 +11,22 @@ function data(state = [], action) {
 function myAccount(state = [], action) {
     return state
 }
-function destination(state = [], action) {
+function nextTrips(state = [], action) {
     return state
+}
+
+function bookingSeat(state=[], action) {
+    switch (action.type) {
+        case "BOOKING_SEATS":
+            return [...state, action.payload]; 
+        default:
+            return state;
+    }
 }
 
 export default combineReducers({
     data,
-    destination,
+    nextTrips,
+    bookingSeat,
     myAccount
 })

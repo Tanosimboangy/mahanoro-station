@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {gettingData} from '../actions/index'
+import {gettingData} from '../actions/index';
+import Container from '../components/HomePage';
+import car from '../../design/car.png';
 
 function Home() {
     const dispatch = useDispatch()
@@ -15,8 +17,8 @@ function Home() {
     const destinations = [...new Set(tripsDestination)];
 
     return (
-        <div>
-            <h2>Where are you going?</h2>
+        <Container>
+            <Container.Heading>Where are you going?</Container.Heading>
             <ul>
                 {destinations.map(destination => (
                     <li key={destination}>
@@ -26,7 +28,7 @@ function Home() {
                     </li>
                 ))}
             </ul>
-        </div>
+        </Container>
     )
 }
 

@@ -1,5 +1,6 @@
 export default {
     data: [],
-    destination: [],
+    nextTrips: [],
+    bookingSeat: [],
     myAccount: []
 }

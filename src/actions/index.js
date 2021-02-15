@@ -8,3 +8,16 @@ export function gettingData() {
         })
     }
 }
+export function setNextTrip(item) {
+    return {
+        type: "SET_NEXT_TRIPS",
+        payload: item,
+    }
+}
+
+export function bookingSeat(item) {
+    return {
+        type: "BOOKING_SEATS",
+        payload: item
+    }
+}

@@ -1,8 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+    export const GlobalStyles = createGlobalStyle`
     html, body {
+        /* font-family: "Rubik"; */
         font-family: "Arial";
+        font-style: normal;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: antialiased;
         background: #f3f3fa5c;
