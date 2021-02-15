@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
         align-items: center;
         flex-wrap: wrap;
         gap: 10px;
-        max-width: 474px;
+        max-width: 420px;
         margin: auto;
         li {
             background: #0F0E17;
