@@ -36291,6 +36291,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.gettingData = gettingData;
 exports.setNextTrip = setNextTrip;
 exports.setBookingSeat = setBookingSeat;
+exports.seatBookedSeats = seatBookedSeats;
 
 function gettingData() {
   return async dispatch => {
@@ -36303,17 +36304,24 @@ function gettingData() {
   };
 }
 
-function setNextTrip(item) {
+function setNextTrip(trip) {
   return {
     type: "SET_NEXT_TRIPS",
-    payload: item
+    payload: trip
   };
 }
 
-function setBookingSeat(item) {
+function setBookingSeat(seat) {
   return {
     type: "SET_BOOKING_SEATS",
-    payload: item
+    payload: seat
+  };
+}
+
+function seatBookedSeats(seat) {
+  return {
+    type: "SET_BOOKED_SEATS",
+    payload: seat
   };
 }
 },{}],"node_modules/shallowequal/index.js":[function(require,module,exports) {
@@ -38243,51 +38251,64 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Heading = exports.Wrapper = void 0;
+exports.Text = exports.Img = exports.Item = exports.List = exports.Heading = exports.Wrapper = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Wrapper = _styledComponents.default.div`
-    max-width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
+    max-width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    ul {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        max-width: 420px;
-        margin: auto;
-        li {
-            background: #0F0E17;
-            padding: 16px;
-            font-weight: normal;
-            font-size: 24px;
-            text-align: center;
-            text-transform: uppercase;
-            width: 205px;
-            box-sizing: border-box;
-            a {
-                color: #FFFFFF;
-            }
-        }
-    }
 `;
 exports.Wrapper = Wrapper;
 const Heading = _styledComponents.default.h2`
     font-weight: bold;
     font-size: 34px;
     color: #000000;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 `;
 exports.Heading = Heading;
+const List = _styledComponents.default.ul`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 484px;
+    margin: auto;
+`;
+exports.List = List;
+const Item = _styledComponents.default.div`
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    align-items: baseline; 
+    justify-content: space-between;
+    background: #0F0E17;
+    cursor: pointer;
+    padding: 16px;
+    width: 200px;
+    white-space: nowrap;
+`;
+exports.Item = Item;
+const Img = _styledComponents.default.img`
+    width: 20px;
+    margin-right: 20px;
+`;
+exports.Img = Img;
+const Text = _styledComponents.default.span`
+    font-weight: normal;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+`;
+exports.Text = Text;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/HomePage/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -38320,17 +38341,31 @@ Container.List = function ContainerList({
   children,
   ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(List, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_HomePage.List, restProps, children);
 };
 
 Container.Item = function ContainerItem({
   children,
   ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(Item, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_HomePage.Item, restProps, children);
+};
+
+Container.Img = function ContainerImg({ ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_HomePage.Img, restProps);
+};
+
+Container.Text = function ContainerText({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_HomePage.Text, restProps, children);
 };
 },{"react":"node_modules/react/index.js","./styles/HomePage":"src/components/HomePage/styles/HomePage.js"}],"design/car.png":[function(require,module,exports) {
 module.exports = "/car.c43a1b6e.png";
+},{}],"design/house.png":[function(require,module,exports) {
+module.exports = "/house.a6cf42ea.png";
 },{}],"src/containers/HomePage.js":[function(require,module,exports) {
 "use strict";
 
@@ -38345,11 +38380,13 @@ var _reactRedux = require("react-redux");
 
 var _reactRouterDom = require("react-router-dom");
 
-var _index = require("../actions/index");
+var _actions = require("../actions");
 
 var _HomePage = _interopRequireDefault(require("../components/HomePage"));
 
 var _car = _interopRequireDefault(require("../../design/car.png"));
+
+var _house = _interopRequireDefault(require("../../design/house.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38361,20 +38398,23 @@ function Home() {
   const dispatch = (0, _reactRedux.useDispatch)();
   const data = (0, _reactRedux.useSelector)(state => state.data);
   (0, _react.useEffect)(() => {
-    dispatch((0, _index.gettingData)());
+    dispatch((0, _actions.gettingData)());
   }, []);
   const tripsDestination = data.map(item => item.destination);
   const destinations = [...new Set(tripsDestination)];
-  return /*#__PURE__*/_react.default.createElement(_HomePage.default, null, /*#__PURE__*/_react.default.createElement(_HomePage.default.Heading, null, "Where are you going?"), /*#__PURE__*/_react.default.createElement("ul", null, destinations.map(destination => /*#__PURE__*/_react.default.createElement("li", {
+  return /*#__PURE__*/_react.default.createElement(_HomePage.default, null, /*#__PURE__*/_react.default.createElement(_HomePage.default.Heading, null, "Where are you going?"), /*#__PURE__*/_react.default.createElement(_HomePage.default.List, null, destinations.map(destination => /*#__PURE__*/_react.default.createElement(_HomePage.default.Item, {
     key: destination
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: `/destination/${destination}`
-  }, destination)))));
+  }, /*#__PURE__*/_react.default.createElement(_HomePage.default.Img, {
+    src: _house.default,
+    alt: "house_image"
+  }), /*#__PURE__*/_react.default.createElement(_HomePage.default.Text, null, destination))))));
 }
 
 var _default = Home;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../actions/index":"src/actions/index.js","../components/HomePage":"src/components/HomePage/index.js","../../design/car.png":"design/car.png"}],"src/components/Header/styles/Header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../actions":"src/actions/index.js","../components/HomePage":"src/components/HomePage/index.js","../../design/car.png":"design/car.png","../../design/house.png":"design/house.png"}],"src/components/Header/styles/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38395,9 +38435,12 @@ const Wrapper = _styledComponents.default.header`
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    padding: 30px 18px;
+    padding: 2% 5%;
     margin-bottom: 50px;
     h2 {
+        img {
+            width: 20px;
+        }
         a {
             font-size: 30px;
             color: #FFFFFE;
@@ -38445,19 +38488,24 @@ var _reactRouterDom = require("react-router-dom");
 
 var _Header = _interopRequireDefault(require("../components/Header"));
 
+var _car = _interopRequireDefault(require("../../design/car.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function HeaderPage() {
   return /*#__PURE__*/_react.default.createElement(_Header.default, null, /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/"
-  }, "Mahanoro Station")), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _car.default,
+    alt: "car"
+  }), " Mahanoro Station")), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/myAccount"
   }, "My account")));
 }
 
 var _default = HeaderPage;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components/Header":"src/components/Header/index.js"}],"src/components/NextToTrips/styles/NextToTrips.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components/Header":"src/components/Header/index.js","../../design/car.png":"design/car.png"}],"src/components/NextToTrips/styles/NextToTrips.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38471,20 +38519,41 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const Wrapper = _styledComponents.default.div`
     max-width: 90%;
-    margin: auto;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
+    margin-right: 5%;
+    margin-left: 5%;
+    /* font-family: Rubik; */
+    font-style: normal;
+    @media (min-width: 720px) {
+        max-width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 `;
 exports.Wrapper = Wrapper;
-const Heading = _styledComponents.default.h2`
-    font-weight: bold;
-    font-size: 34px;
-    color: #000000;
+const Heading = _styledComponents.default.div`
     text-align: center;
     margin-bottom: 30px;
-    span {
-        color: #E53170;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 60%;
+    margin: auto;
+    margin-bottom: 50px;
+    img {
+        width: 60px;
+        margin-right: 20px;
+    }
+    div {
+        h2 {
+            font-weight: bold;
+            font-size: 34px;
+            color: #000000;
+        }
+        p {
+            color: #E53170;
+            font-weight: bold;
+            font-size: 34px;
+        }
     }
 `;
 exports.Heading = Heading;
@@ -38502,7 +38571,8 @@ const Item = _styledComponents.default.div`
 `;
 exports.Item = Item;
 const Image = _styledComponents.default.img`
-
+    width: 40px;
+    height: auto;
 `;
 exports.Image = Image;
 const Day = _styledComponents.default.p`
@@ -38524,8 +38594,53 @@ const Seats = _styledComponents.default.p`
 `;
 exports.Seats = Seats;
 const Button = _styledComponents.default.button`
+    background: #E53170;
+    padding: 10px 16px;
+    color: #FFFFFF;
+    border: transparent;
+    font-weight: normal;
+    font-size: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
 
-`;
+    /* & [disabled] {
+        pointer-events: auto! important;
+        cursor: not-allowed! important;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), #E53170;
+    } */
+`; // import styled from 'styled-components';
+// const Container = styled.div`
+//         display: grid;
+//         justify-content: center;
+//     @media(min-width: 1114px){
+//         display: flex;
+//         justify-content: space-between;
+//     }
+// `;
+// const Frame = styled.div``;
+// const Image = styled.img`
+//     max-width: 100%;
+// `;
+// const Day = styled.span`
+//     font-weight: normal;
+//     font-size: 36px;
+//     line-height: 43px;
+//     color: #FF8906
+// `;
+// const Time = styled.span`${Day}`;
+// const Date = styled.span`
+//     ${Day};
+//     color: #000000;
+// `;
+// const SeatsInfo = styled.span`${Date}`;
+// const ButtonContainer = styled.div`
+//     background: #E53170;
+//     margin-bottom: 32px;
+// `;
+
 exports.Button = Button;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/NextToTrips/index.js":[function(require,module,exports) {
 "use strict";
@@ -38648,17 +38763,21 @@ function NextToTrips() {
 
   const totalSeatsLeft = item => {
     return item.filter(seat => seat.isAvailable).length;
-  };
+  }; // EEE => day
+  // HH:mm => time
+  // 
 
-  return /*#__PURE__*/_react.default.createElement(_NextToTrips.default, null, /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Heading, null, "Next trips to: ", /*#__PURE__*/_react.default.createElement("span", null, destination)), nextDestination.map(trip => {
+
+  return /*#__PURE__*/_react.default.createElement(_NextToTrips.default, null, /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Heading, null, /*#__PURE__*/_react.default.createElement("img", {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUki2YIQSsl1Ktkh0oMVtv8xLg9-VvFfNuEQ&usqp=CAU",
+    alt: "clock_image"
+  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Next trips to:"), /*#__PURE__*/_react.default.createElement("p", null, destination))), nextTrips && nextTrips.map(trip => {
     return /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Base, {
       key: trip.id
     }, /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Image, {
-      src: "dlkjlksdjfksd",
-      alt: ""
-    }), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Item, null, /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Day, null, new Date(trip.departureTime).toLocaleDateString('en-US', {
-      weekday: 'long'
-    })), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Time, null, trip.departureTime)), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Item, null, /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Date, null, new Date(trip.departureTime).toLocaleDateString("en-US")), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Seats, null, totalSeatsLeft(trip.seats) < 2 ? `${totalSeatsLeft(trip.seats)} seat` : `${totalSeatsLeft(trip.seats)} seats`, " left.")), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Item, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC7NdbqIz7MkVy7G7CGjhfofoZZSDxyhvWAw&usqp=CAU",
+      alt: "car"
+    }), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Item, null, /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Day, null, trip.departureTime), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Time, null, new Date(trip.departureTime).getHours())), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Item, null, /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Date, null, new Date(trip.departureTime).toLocaleDateString("en-US")), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Seats, null, totalSeatsLeft(trip.seats) < 2 ? `${totalSeatsLeft(trip.seats)} seat` : `${totalSeatsLeft(trip.seats)} seats`, " left.")), /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Item, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
       to: `/trip/${trip.id}`
     }, /*#__PURE__*/_react.default.createElement(_NextToTrips.default.Button, {
       disabled: totalSeatsLeft(trip.seats) ? false : true
@@ -38712,8 +38831,8 @@ const Base = _styledComponents.default.div`
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    justify-content: space-between;
     margin-top: 30px;
+    gap: 30px;
 `;
 const Button = _styledComponents.default.div`
     display: flex;
@@ -38727,13 +38846,29 @@ const Container = _styledComponents.default.div`
     max-width: 90%;
     margin-left: 5%;
     margin-right: 5%;
+`;
+const Wrapper = _styledComponents.default.div`
+    
+`;
+const Frame = _styledComponents.default.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+const Img = _styledComponents.default.img`
+    width: 70px;
+`;
+const InfoHeading = _styledComponents.default.div`
+    margin-left: 20px;
     h2 {
+        color: #000000;
         font-weight: bold;
         font-size: 34px;
-        color: #000000;
-        span {
-            color: #E53170;
-        }
+    }
+    p {
+        color: #E53170;
+        font-weight: bold;
+        font-size: 34px;
     }
 `;
 
@@ -38745,38 +38880,119 @@ function BookingSeats() {
   const data = (0, _reactRedux.useSelector)(state => state.data);
   const bookingSeat = (0, _reactRedux.useSelector)(state => state.bookingSeat);
   const bookingSeatDetails = data.filter(item => item.id == seatId);
-  const [modal, setModal] = (0, _react.useState)(false);
   (0, _react.useEffect)(() => {
-    dispatch((0, _actions.setBookingSeat)(bookingSeat));
+    dispatch((0, _actions.setBookingSeat)(bookingSeatDetails));
   }, [data]);
+  console.log(bookingSeatDetails);
 
-  function showModal() {}
+  function handleSeat(e) {
+    console.log(bookingSeat); // const seatItem = bookingSeat[1].map(item => 
+    //     item.seats.map(seat => 
+    //         seat.isAvailable =  "false",
+    //     ),
+    // );
+  }
 
   return /*#__PURE__*/_react.default.createElement(Container, null, bookingSeatDetails.map(item => {
-    return /*#__PURE__*/_react.default.createElement(_react.Fragment, {
+    return /*#__PURE__*/_react.default.createElement(Wrapper, {
       key: item.id
-    }, /*#__PURE__*/_react.default.createElement("h2", null, "Book a seat to: ", /*#__PURE__*/_react.default.createElement("span", null, item.destination)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "PICK A SEAT"), /*#__PURE__*/_react.default.createElement("p", null, "TRIP INFORMATION")), /*#__PURE__*/_react.default.createElement(Base, {
+    }, /*#__PURE__*/_react.default.createElement(Frame, null, /*#__PURE__*/_react.default.createElement(Img, {
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC7NdbqIz7MkVy7G7CGjhfofoZZSDxyhvWAw&usqp=CAU",
+      alt: "buss_image"
+    }), /*#__PURE__*/_react.default.createElement(InfoHeading, null, /*#__PURE__*/_react.default.createElement("h2", null, "Book a seat to: "), /*#__PURE__*/_react.default.createElement("p", null, item.destination))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "PICK A SEAT"), /*#__PURE__*/_react.default.createElement("p", null, "TRIP INFORMATION")), /*#__PURE__*/_react.default.createElement(Base, {
       key: item.id
-    }, /*#__PURE__*/_react.default.createElement(Image, null, item.seats.map(items => {
-      return /*#__PURE__*/_react.default.createElement(_react.Fragment, {
-        key: items.id
-      }, items.available = "true" ? /*#__PURE__*/_react.default.createElement("img", {
-        src: _available_seat.default
+    }, /*#__PURE__*/_react.default.createElement(Image, null, item.seats.map(seat => {
+      return seat.isAvailable ? /*#__PURE__*/_react.default.createElement("img", {
+        key: seat.id,
+        onClick: handleSeat,
+        src: _available_seat.default,
+        id: seat.id,
+        alt: "cars"
       }) : /*#__PURE__*/_react.default.createElement("img", {
-        src: _available_seat.default
-      }));
-    })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Departure time:  ", item.departureTime), /*#__PURE__*/_react.default.createElement("p", null, "Driver:  ", item.driverName), /*#__PURE__*/_react.default.createElement("p", null, "Driver's contact:  ", item.driverContact), /*#__PURE__*/_react.default.createElement("p", null, "Estimated duration: :  ", item.estimatedDuration), /*#__PURE__*/_react.default.createElement("p", null, "Break:  ", item.breaks), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("span", null, item.price), " Ar/seat"))), /*#__PURE__*/_react.default.createElement(Button, null, /*#__PURE__*/_react.default.createElement("button", {
-      onClick: showModal
-    }, "Book seats"), /*#__PURE__*/_react.default.createElement("p", null, "TOTAL: Ar"))));
+        key: seat.id,
+        src: _booked_seat.default,
+        alt: "cars"
+      });
+    })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Departure time:  ", item.departureTime), /*#__PURE__*/_react.default.createElement("p", null, "Driver:  ", item.driverName), /*#__PURE__*/_react.default.createElement("p", null, "Driver's contact:  ", item.driverContact), /*#__PURE__*/_react.default.createElement("p", null, "Estimated duration: :  ", item.estimatedDuration), /*#__PURE__*/_react.default.createElement("p", null, "Break:  ", item.breaks), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("span", null, item.price), " Ar/seat"))), /*#__PURE__*/_react.default.createElement(Button, null, /*#__PURE__*/_react.default.createElement("button", null, "Book seats"), /*#__PURE__*/_react.default.createElement("p", null, "TOTAL: Ar"))));
   }));
 }
 
-var _default = BookingSeats; // new Date(1613397600).toLocaleDateString('en-US', { weekday: 'long' }) = day
-// new Date(1504095567183).toLocaleDateString("en-US") = date
-//  = time
-
+var _default = BookingSeats;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../actions":"src/actions/index.js","../../design/available_seat.png":"design/available_seat.png","../../design/booked_seat.png":"design/booked_seat.png","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../actions":"src/actions/index.js","../../design/available_seat.png":"design/available_seat.png","../../design/booked_seat.png":"design/booked_seat.png","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/containers/MyAccount.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = MyAccount;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const ProfileFrame = _styledComponents.default.div`
+    display: flex;
+    flex-direction: row;
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+`;
+const ProfileImage = _styledComponents.default.img`
+    width: 134px;
+`;
+const Base = _styledComponents.default.div`
+    margin-left: 70px;
+`;
+const FormAccount = _styledComponents.default.form`
+    display: flex;
+    flex-direction: column;
+`;
+const AccountFeature = _styledComponents.default.section`
+    display:flex;
+    grid-template-columns: auto auto;
+    gap: 75px;
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+`;
+const BookingList = _styledComponents.default.ul`
+    list-style: none;
+    padding: 0;
+`;
+const BookingItem = _styledComponents.default.li`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+
+`;
+const BookingBase = _styledComponents.default.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+function MyAccount() {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(ProfileFrame, null, /*#__PURE__*/_react.default.createElement(ProfileImage, {
+    src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAM1BMVEXk5ueutLfn6eqrsbTp6+zg4uOwtrnJzc/j5earsbW0uby4vcDQ09XGyszU19jd3+G/xMamCvwDAAAFLklEQVR4nO2d2bLbIAxAbYE3sDH//7WFbPfexG4MiCAcnWmnrzkjIRaD2jQMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMw5wQkHJczewxZh2lhNK/CBOQo1n0JIT74/H/qMV0Z7GU3aCcVPuEE1XDCtVLAhgtpme7H0s1N1U7QjO0L8F7llzGeh1hEG/8Lo7TUmmuSrOfns9xnGXpXxsONPpA/B6OqqstjC6Ax/0ujkNdYQQbKNi2k64qiiEZ+ohi35X+2YcZw/WujmslYewiAliVYrxgJYrdwUmwXsU+RdApUi83oNIE27YvrfB/ZPg8+BJETXnqh9CVzBbTQHgojgiCvtqU9thFJg/CKz3VIMKMEkIXxIWqIpIg2SkjYj+xC816mrJae2aiWGykxRNsW0UwiJghJDljYI5CD8GRiCtIsJxizYUPQ2pzItZy5pcisTRdk/a9m4amtNNfBuQkdVhSaYqfpNTSFGfb9GRIakrE2Pm+GFLaCQPqiu0OpWP+HMPQQcgQMiQprWXNmsVwIjQjYi/ZrhAqNTCgr2gu0Jnz85RSSjso0HkMFZ0YZjKkc26a/jlmh9JiDyDxi9oeorTYAzZkwwoMz19pzj9bnH/GP/+qbchjSGflneWYhtTuKdMOmNKZcJ5TjInQKcYXnESd/jQxy0ENpULTNGOGgxpap/oyw9pbUAqhfx2Dbkhovvfgz4iUzoM9+GlK6/Mh4q29hyC1mwro30hpVVLPF9wYQr71RazOeM5/cw81iBRD+A03aM9/C/obbrKjbYSpCmIVG3qT/Q8oeUo3Rz0IL7vI1tEbCB9pSiu8I/aV8x3Kg/BGWrWp4ZVs0nZfmAoEG4h/61yHYIJiFSl6Q0Vk6tTW1N8kYp8hdOkfHYYMXd2Qft+8CYwqYDSKvqIh+MCF8Wgca2u/cwdgeW3TtuVn6+1oBs3yLo5C2JpK6CvQzGpfUkz9UG/87gCsi5o2LIXolxN0FbwAsjOLEr+YJmXn7iR6N0BCt5p5cMxm7eAsfS+/CACQf4CTpKjzgkvr2cVarVTf96372yut7XLJ1sa7lv6VcfgYrWaxqr3Wlo1S6pvStr22sxOtTNPLzdY3nj20bPP+ejFdJYkLsjGLdtPBEbe/mr2bQKiXWJDroA+vtzc0p9aahuwqHMDYrQEXHEw9jwQl3drMpts9JBU1SdktPe5FBRdJQ6bwXBpa57ib2A8kukQDzMjh++Uo7Fo6Wd02Pkf4fknqoo4HtvAIjsqUcjx6DIPgWCaOML9rKI/oqD9/lgNrn+eF+p7j8tnzHBiR7+kdUGw/+V1Kzkc75mMy6U+FMaxjPibiM1U1uGM+puInHpmALZCgP4pt7i840MV8+0R1zPsRB6UTcqpizncYwZ89syDydfyWCwXB1l8/zRNGWbTG/GHKUm9AkxHMc/EGSk3z2+ArEhPEV5TUBLEvUGFcjEUH80J/jveTGOAJEljJbILWGQT3zRYiwuKsUXN1EEJAzBhRJFll7mBUG7KD8EqPkKekBREaL8hMDZLQSG6AQjtHPYmvTQnX0TtpC1SYCe2YdkkyLP3jj5BSbKiuR585eQhTgoje6yIb0Yb0C+mV6EYvebqw5SDy2WmubogZiF2AVxPC2FpDf8H2Q9QWo6IkjUxTWVEI3WY/wrCeSuqJ+eRWzXR/JXwgVjUMozbCOfoEZiSiKVGepqv5CJ8RyR4D7xBeamqa7z3BJ/z17JxuBPdv93d/a2Ki878MMAzDMAzDMAzDMAzDMF/KP09VUmxBAiI3AAAAAElFTkSuQmCC",
+    alt: "Your profile account"
+  }), /*#__PURE__*/_react.default.createElement(Base, null, /*#__PURE__*/_react.default.createElement("h2", null, "My Account"))), /*#__PURE__*/_react.default.createElement(AccountFeature, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "My personnal informations:"), /*#__PURE__*/_react.default.createElement(FormAccount, null, /*#__PURE__*/_react.default.createElement("label", null, "First name"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text" // value={passenger.passengerFirstName} 
+    ,
+    onChange: e => e
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Last name"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text" // value={passenger.passengerLastName}
+    ,
+    onChange: e => e
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Phone number"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text" // value={passenger.passengerPhoneNumber}
+    ,
+    onChange: e => e
+  }), /*#__PURE__*/_react.default.createElement("button", null, "Update"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "My bookings:"), /*#__PURE__*/_react.default.createElement(BookingList, null, /*#__PURE__*/_react.default.createElement(BookingItem, null, /*#__PURE__*/_react.default.createElement("i", null, "\uD83D\uDE95"), /*#__PURE__*/_react.default.createElement(BookingBase, null, /*#__PURE__*/_react.default.createElement("span", null, "Antananarivo"), /*#__PURE__*/_react.default.createElement("span", null, "Date")), /*#__PURE__*/_react.default.createElement(BookingBase, null, /*#__PURE__*/_react.default.createElement("span", null, "1 seat"), /*#__PURE__*/_react.default.createElement("span", null, "0000 Ar")), /*#__PURE__*/_react.default.createElement("button", null, "Cancel"))))));
+}
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38796,6 +39012,8 @@ var _NextToTrip = _interopRequireDefault(require("./containers/NextToTrip"));
 
 var _BookingSeats = _interopRequireDefault(require("./containers/BookingSeats"));
 
+var _MyAccount = _interopRequireDefault(require("./containers/MyAccount"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
@@ -38804,13 +39022,13 @@ function App() {
     path: "/"
   }, /*#__PURE__*/_react.default.createElement(_HomePage.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
     path: "/myAccount"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "My Account")), /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
+  }, /*#__PURE__*/_react.default.createElement(_MyAccount.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
     path: `/destination/:destination`
   }, /*#__PURE__*/_react.default.createElement(_NextToTrip.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouter.Route, {
     path: `/trip/:seatId`
   }, /*#__PURE__*/_react.default.createElement(_BookingSeats.default, null))));
 }
-},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","./containers/HomePage":"src/containers/HomePage.js","./containers/Header":"src/containers/Header.js","./containers/NextToTrip":"src/containers/NextToTrip.js","./containers/BookingSeats":"src/containers/BookingSeats.js"}],"node_modules/redux-thunk/es/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","./containers/HomePage":"src/containers/HomePage.js","./containers/Header":"src/containers/Header.js","./containers/NextToTrip":"src/containers/NextToTrip.js","./containers/BookingSeats":"src/containers/BookingSeats.js","./containers/MyAccount":"src/containers/MyAccount.js"}],"node_modules/redux-thunk/es/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38861,7 +39079,7 @@ function data(state = [], action) {
 function nextTrips(state = [], action) {
   switch (action.type) {
     case "SET_NEXT_TRIPS":
-      return [...state, action.payload];
+      return action.payload;
 
     default:
       return state;
@@ -38878,10 +39096,21 @@ function bookingSeat(state = [], action) {
   }
 }
 
+function seatAvailable(state = [], action) {
+  switch (action.type) {
+    case "SET_BOOKED_SEATS":
+      return [...state, action.payload];
+
+    default:
+      return state;
+  }
+}
+
 var _default = (0, _redux.combineReducers)({
   data,
   nextTrips,
-  bookingSeat
+  bookingSeat,
+  seatAvailable
 });
 
 exports.default = _default;
@@ -38895,7 +39124,15 @@ exports.default = void 0;
 var _default = {
   data: [],
   nextTrips: [],
-  bookingSeat: []
+  bookingSeat: [],
+  seatAvailable: [] // passenger:
+  // {
+  //     "id": '1',
+  //     "passengerFirstName": "John",
+  //     "passengerLastName": "Doe",
+  //     "passengerPhoneNumber": "0344752060",
+  // }
+
 };
 exports.default = _default;
 },{}],"src/store.js":[function(require,module,exports) {
@@ -39006,7 +39243,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56955" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54442" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

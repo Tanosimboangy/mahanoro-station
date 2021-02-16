@@ -20,17 +20,27 @@ function NextToTrips() {
         return item.filter(seat => seat.isAvailable).length
     }
 
+    // EEE => day
+    // HH:mm => time
+    // 
+
     return (
         <NextToTrip>
-            <NextToTrip.Heading>Next trips to: <span>{destination}</span></NextToTrip.Heading>
-            {
-                nextDestination.map(trip => {
+            <NextToTrip.Heading>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUki2YIQSsl1Ktkh0oMVtv8xLg9-VvFfNuEQ&usqp=CAU" alt="clock_image"/>
+                <div>
+                    <h2>Next trips to:</h2>
+                    <p>{destination}</p>
+                </div>
+            </NextToTrip.Heading>
+                {nextTrips && nextTrips.map(trip => {
                     return (
                         <NextToTrip.Base key={trip.id}>
-                            <NextToTrip.Image src="dlkjlksdjfksd" alt=""/>
+                            <NextToTrip.Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC7NdbqIz7MkVy7G7CGjhfofoZZSDxyhvWAw&usqp=CAU" alt="car"/>
                             <NextToTrip.Item>
-                                <NextToTrip.Day>{new Date(trip.departureTime).toLocaleDateString('en-US', { weekday: 'long' })}</NextToTrip.Day>
-                                <NextToTrip.Time>{trip.departureTime}</NextToTrip.Time>
+                                <NextToTrip.Day>{trip.departureTime}</NextToTrip.Day>
+                                {/* <NextToTrip.Day>{new Date(trip.departureTime).toLocaleDateString('en-US', { weekday: 'long' })}</NextToTrip.Day> */}
+                                <NextToTrip.Time>{new Date(trip.departureTime).getHours()}</NextToTrip.Time>
                             </NextToTrip.Item>
                             <NextToTrip.Item>
                                 <NextToTrip.Date>{new Date(trip.departureTime).toLocaleDateString("en-US")}</NextToTrip.Date>
@@ -45,9 +55,8 @@ function NextToTrips() {
                             </NextToTrip.Item>
                         </NextToTrip.Base>
                     )
-                })
-            }
-        </NextToTrip>
+                })}
+            </NextToTrip>
     )
 }
 export default NextToTrips;

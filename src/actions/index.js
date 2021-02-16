@@ -8,16 +8,24 @@ export function gettingData() {
         })
     }
 }
-export function setNextTrip(item) {
+export function setNextTrip(trip) {
     return {
         type: "SET_NEXT_TRIPS",
-        payload: item,
+        payload: trip,
     }
 }
 
-export function setBookingSeat(item) {
+export function setBookingSeat(seat) {
     return {
         type: "SET_BOOKING_SEATS",
-        payload: item
+        payload: seat
     }
 }
+
+export function seatBookedSeats(seat) {
+    return {
+        type: "SET_BOOKED_SEATS",
+        payload: seat
+    }
+}
+

@@ -9,9 +9,12 @@ export const Wrapper = styled.header`
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    padding: 30px 18px;
+    padding: 2% 5%;
     margin-bottom: 50px;
     h2 {
+        img {
+            width: 20px;
+        }
         a {
             font-size: 30px;
             color: #FFFFFE;

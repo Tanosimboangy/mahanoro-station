@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {gettingData} from '../actions/index';
+import {gettingData} from '../actions';
 import Container from '../components/HomePage';
 import car from '../../design/car.png';
+import house from '../../design/house.png';
 
 function Home() {
     const dispatch = useDispatch()
@@ -19,15 +20,16 @@ function Home() {
     return (
         <Container>
             <Container.Heading>Where are you going?</Container.Heading>
-            <ul>
+            <Container.List>
                 {destinations.map(destination => (
-                    <li key={destination}>
+                    <Container.Item  key={destination}>
                         <Link to={`/destination/${destination}`}>
-                            {destination}
+                            <Container.Img src={house} alt="house_image"/> 
+                            <Container.Text>{destination}</Container.Text>
                         </Link>
-                    </li>
+                    </Container.Item>
                 ))}
-            </ul>
+            </Container.List>
         </Container>
     )
 }

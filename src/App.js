@@ -3,7 +3,8 @@ import { Route, Switch } from 'react-router'
 import Home from './containers/HomePage';
 import Header from './containers/Header';
 import NextToTrip from './containers/NextToTrip';
-import BookingSeats from './containers/BookingSeats';
+import BookingSeats from './containers/BookingSeats'; 
+import MyAccount from './containers/MyAccount'; 
 
 export default function App() {
     return (
@@ -14,7 +15,7 @@ export default function App() {
                     <Home />
                 </Route>
                 <Route path="/myAccount">
-                    <h1>My Account</h1>
+                    <MyAccount/>
                 </Route>
                 <Route path={`/destination/:destination`}>
                     <NextToTrip />
