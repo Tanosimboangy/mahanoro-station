@@ -1,8 +1,8 @@
 export default {
     data: [],
     nextTrips: [],
-    bookingSeat: [],
-    seatAvailable: [],
+    bookingSeat: {},
+    pickSeats: [], 
     // passenger:
     // {
     //     "id": '1',

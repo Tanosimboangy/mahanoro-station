@@ -1,48 +1,52 @@
 import React from 'react';
 import  {
-    Container,
+    BlockContainer,
+    Wrapper,
     Frame,
-    Subtitle,
     Image,
-    InfoContainer,
+    Img,
+    InfoHeading,
+    SubTitle,
+    SubText,
+    Base,
+    SubContainer,
     Info,
-    BookingContainer,
-    Price,
-    BookingButton,
-    TotalPrice
+    Button,
 } from './styles/BookingSeat';
 
-export default function BookingSeats({children, restProps}) {
-    return (
-        <Container {...restProps}>{children}</Container>
-    )
+export default function Container({children, ...restProps}) {
+    return <BlockContainer {...restProps}>{children}</BlockContainer>
 }
- 
-BookingSeats.Frame = function BookingSeats({children, restProps}) {
+Container.Wrapper = function ContainerWrapper({children, ...restProps}) {
+    return <Wrapper {...restProps}>{children}</Wrapper>
+}
+Container.Frame = function ContainerFrame({children, ...restProps}) {
     return <Frame {...restProps}>{children}</Frame>
 }
-BookingSeats.Subtitle = function BookingSeatsSubtitle({children, restProps}) {
-    return <Subtitle {...restProps}>{children}</Subtitle>
+Container.Img = function ContainerImg({...restProps}) {
+    return <Img {...restProps}/>
 }
-BookingSeats.Image = function BookingSeatsImage({src, onClick, id, restProps}) {
-    return <Image src={src} onClick={onClick} id={id} {...restProps} /> 
+Container.InfoHeading = function ContainerInfoHeading({children, ...restProps}) {
+    return <InfoHeading {...restProps}>{children}</InfoHeading>
 }
-BookingSeats.InfoContainer = function BookingSeatsInfoContainer({children, restProps}) {
-    return <InfoContainer {...restProps}>{children}</InfoContainer>
+Container.SubTitle = function ContainerSubTitle({children, ...restProps}) {
+    return <SubTitle {...restProps}>{children}</SubTitle>
 }
-BookingSeats.Info = function BookingSeatsInfo({children, restProps}) {
+Container.SubText = function ContainerSubText({children, ...restProps}) {
+    return <SubText {...restProps}>{children}</SubText>
+}
+Container.SubContainer = function ContainerSubContainer({children, ...restProps}) {
+    return <SubContainer {...restProps}>{children}</SubContainer>
+}
+Container.Base = function ContainerBase({children, ...restProps}) {
+    return <Base {...restProps}>{children}</Base>
+}
+Container.Image = function ContainerImage({children, ...restProps}) {
+    return <Image {...restProps}>{children}</Image>
+}
+Container.Info = function ContainerInfo({children, ...restProps}) {
     return <Info {...restProps}>{children}</Info>
 }
-BookingSeats.BookingContainer = function BookingSeatsBookingContainer({children, restProps}) {
-    return <BookingContainer {...restProps}>{children}</BookingContainer>
+Container.Button = function ContainerButton({children, ...restProps}) {
+    return <Button {...restProps}>{children}</Button>
 }
-BookingSeats.Price = function BookingSeatsPrice({children, restProps}) {
-    return <Price {...restProps}>{children}</Price>
-}
-BookingSeats.BookingButton = function BookingSeatsBookingButton({children, restProps}) {
-    return <BookingButton {...restProps}>{children}</BookingButton>
-}
-BookingSeats.TotalPrice = function BookingSeatsTotalPrice({children, restProps}) {
-    return <TotalPrice {...restProps}>{children}</TotalPrice>
-}
-

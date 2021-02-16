@@ -19,18 +19,17 @@ function nextTrips(state = [], action) {
 function bookingSeat(state=[], action) {
     switch (action.type) {
         case "SET_BOOKING_SEATS":
-            return [...state, action.payload]
+            return action.payload
         default:
             return state
     }
 }
-
-function seatAvailable(state=[], action) {
+function pickSeats(state=[], action) {
     switch (action.type) {
-        case "SET_BOOKED_SEATS":
-            return [...state, action.payload]
+        case "PICK_SEATS":
+            return [...state, action.payload];
         default:
-            return state
+            return state;
     }
 }
 
@@ -38,5 +37,5 @@ export default combineReducers({
     data,
     nextTrips,
     bookingSeat,
-    seatAvailable,
+    pickSeats,
 })

@@ -28,4 +28,10 @@ export function seatBookedSeats(seat) {
         payload: seat
     }
 }
+export function getSeats(seat) {
+    return {
+        type: "PICK_SEATS",
+        payload: seat
+    }
+}
 
