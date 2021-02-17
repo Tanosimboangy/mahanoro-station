@@ -59,13 +59,14 @@ export const SubContainer = styled.div``;
 export const Base = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: end;
     margin-top: 30px;
     gap: 30px;
     div:first-of-type {
         max-width: 260px;
         margin-left: 0;
         margin-right: auto;
+        display: block;
         img {
             width: 50px;
             margin-bottom: 10px;

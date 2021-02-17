@@ -38,6 +38,7 @@
 - While doing this project, I learned: firstly, using all the ways to deal with an array, such as spread, map(), and filter().
  
 - Apart from that, I started to fully understand more about how to use Redux, as well as style components, and how they work.
+- Since I could not finish the booking seats and myAccount functionalities, I would like to improve it.
  
 # *My wisdom:*
  

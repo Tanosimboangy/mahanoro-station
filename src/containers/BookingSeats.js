@@ -75,7 +75,7 @@ function BookingSeats() {
                             </Container.Base>
                             <Container.Button>
                                 <button onClick={(e) => dispatch(showModal(true))}>Book {`${pickSeats.length > 1}` ? `${pickSeats.length}  seats` : `${pickSeats.length} seat`}</button>
-                                <p>TOTAL: Ar</p>
+                                <p>TOTAL: <span></span> Ar</p>
                             </Container.Button>
                         </Container.SubContainer>
                         {modal && <Modal closeModal={() => dispatch(showModal(false))}/>}

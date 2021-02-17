@@ -12,7 +12,7 @@ function Home() {
     // Fetching the data and storing them in the data array
     useEffect(() => {
         dispatch(gettingData());
-    }, [data])
+    }, [])
 
     // 
     const tripDestination = data.map(item => item.destination);

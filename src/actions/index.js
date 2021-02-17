@@ -48,3 +48,31 @@ export function availableSeats(seat) {
         payload: seat,
     }
 }
+
+export function account(account) {
+    return {
+        type: "ACCOUNT",
+        payload: account
+    }
+}
+
+export function firstName(name) {
+    return {
+        type: "FIRST_NAME",
+        payload: name
+    }
+}
+
+export function lastName(name) {
+    return {
+        type: "LAST_NAME",
+        payload: name
+    }
+}
+
+export function contact(number) {
+    return {
+        type: "CONTACT",
+        payload: number
+    }
+}

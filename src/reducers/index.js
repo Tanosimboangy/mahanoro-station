@@ -55,10 +55,40 @@ function showModal(state = false, action) {
     }
 }
 
+
+function setAccount(state = {}, action) {
+    switch (action.type) {
+        case "ACCOUNT":
+            return action.payload;
+        case "FIRST_NAME":
+            return {
+                ...state,
+                firstName: action.payload
+            };
+        case "LAST_NAME":
+            return {
+                ...state,
+                lastName: action.payload
+            };
+        case "CONTANCT":
+            return {
+                ...state,
+                contact: action.payload
+            };
+            case "SET_BOOKINGS":
+                return {
+                    ...state,
+                    booking: [...state.booking, action.payload]
+                };
+        default:
+            return state;
+    }
+}
 export default combineReducers({
     data,
     nextTrips,
     bookingSeat,
     pickSeats,
     showModal,
+    setAccount,
 })
