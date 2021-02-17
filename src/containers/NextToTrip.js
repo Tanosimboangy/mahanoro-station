@@ -26,11 +26,11 @@ function NextToTrips() {
     return (
         <NextToTrip>
             <NextToTrip.Heading>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUki2YIQSsl1Ktkh0oMVtv8xLg9-VvFfNuEQ&usqp=CAU" alt="clock_image"/>
-                <div>
-                    <h2>Next trips to:</h2>
-                    <p>{destination}</p>
-                </div>
+                <NextToTrip.Img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUki2YIQSsl1Ktkh0oMVtv8xLg9-VvFfNuEQ&usqp=CAU" alt="clock_image"/>
+                <NextToTrip.HeaderWrapper>
+                    <NextToTrip.HeaderTitle>Next trips to:</NextToTrip.HeaderTitle>
+                    <NextToTrip.HeaderText>{destination}</NextToTrip.HeaderText>
+                </NextToTrip.HeaderWrapper>
             </NextToTrip.Heading>
                 {nextTrips && nextTrips.map(trip => {
                     const getDate = new Date(trip.departureTime);
@@ -49,9 +49,7 @@ function NextToTrips() {
                             <NextToTrip.Item>
                                 <NextToTrip.Date>{departureDate}</NextToTrip.Date>
                                 <NextToTrip.Seats>
-                                    { totalSeatsAvailable > 1 ? 
-                                    `${totalSeatsAvailable} seats`:
-                                    `${totalSeatsAvailable} seat`} left.
+                                    { totalSeatsAvailable > 1 ? `${totalSeatsAvailable} seats`:`${totalSeatsAvailable} seat`} left.
                                 </NextToTrip.Seats>
                             </NextToTrip.Item>
                             <NextToTrip.Item>

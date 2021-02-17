@@ -6,6 +6,7 @@ import App from './App';
 import store from './store';
 import {GlobalStyles} from './GlobalStyles';
 
+// Here where I render the app
 ReactDOM.render(
     <Provider store={store}>
         <Router>

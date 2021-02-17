@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Header from "../components/Header"
 import car from "../../design/car.png"
 function HeaderPage() {
+    // Here where I have the home page and the account page
     return (
         <Header>
             <h2><Link to="/"><img src={car} alt="car"/> Mahanoro Station</Link></h2>

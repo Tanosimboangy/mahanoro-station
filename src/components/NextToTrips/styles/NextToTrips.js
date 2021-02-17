@@ -13,29 +13,28 @@ export const Wrapper = styled.div`
 `;
 export const Heading = styled.div`
     text-align: center;
-    margin-bottom: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    max-width: 60%;
-    margin: auto;
     margin-bottom: 50px;
-    img {
-        width: 60px;
-        margin-right: 20px;
-    }
-    div {
-        h2 {
-            font-weight: bold;
-            font-size: 34px;
-            color: #000000;
-        }
-        p {
-            color: #E53170;
-            font-weight: bold;
-            font-size: 34px;
-        }
-    }
+`;
+export const Img = styled.img`
+    width: 60px;
+    margin-right: 20px;
+`;
+export const HeaderWrapper = styled.div`
+    
+`;
+export const HeaderTitle = styled.h2`
+    font-weight: bold;
+    font-size: 34px;
+    color: #000000;
+    white-space: nowrap;
+`;
+export const HeaderText = styled.p`
+    color: #E53170;
+    font-weight: bold;
+    font-size: 34px;
 `;
 export const Base = styled.div`
     display: flex;
@@ -86,41 +85,4 @@ export const Button = styled.button`
         cursor: not-allowed;
     }
 `;
-
-
-
-// import styled from 'styled-components';
-
-// const Container = styled.div`
-//         display: grid;
-//         justify-content: center;
-
-//     @media(min-width: 1114px){
-//         display: flex;
-//         justify-content: space-between;
-//     }
-// `;
-
-// const Frame = styled.div``;
-// const Image = styled.img`
-//     max-width: 100%;
-// `;
-// const Day = styled.span`
-//     font-weight: normal;
-//     font-size: 36px;
-//     line-height: 43px;
-//     color: #FF8906
-// `;
-
-// const Time = styled.span`${Day}`;
-// const Date = styled.span`
-//     ${Day};
-//     color: #000000;
-// `;
-
-// const SeatsInfo = styled.span`${Date}`;
-// const ButtonContainer = styled.div`
-//     background: #E53170;
-//     margin-bottom: 32px;
-// `;
 

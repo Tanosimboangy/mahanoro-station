@@ -35,3 +35,16 @@ export function getSeats(seat) {
     }
 }
 
+export function showModal(modal) {
+    return {
+        type: "SHOW_MODAL",
+        payload: modal
+    }
+}
+
+export function availableSeats(seat) {
+    return {
+        type: "AVAILABLE_SEAT",
+        payload: seat,
+    }
+}

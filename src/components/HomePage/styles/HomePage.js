@@ -14,6 +14,13 @@ export const Heading = styled.h2`
     font-size: 34px;
     color: #000000;
     margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+        width: 60px;
+        margin-right: 20px;
+    }
 `; 
 export const List = styled.ul`
     display: flex;

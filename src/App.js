@@ -7,6 +7,7 @@ import BookingSeats from './containers/BookingSeats';
 import MyAccount from './containers/MyAccount'; 
 
 export default function App() {
+    // Rendering each page according its path
     return (
         <div>
             <Header />

@@ -3,11 +3,10 @@ export default {
     nextTrips: [],
     bookingSeat: {},
     pickSeats: [], 
-    // passenger:
-    // {
-    //     "id": '1',
-    //     "passengerFirstName": "John",
-    //     "passengerLastName": "Doe",
-    //     "passengerPhoneNumber": "0344752060",
+    showModal: false,
+    // passenger: {
+    //     passengerFirstName: "",
+    //     passengerLastName: "",
+    //     passengerPhoneNumber: "",
     // }
 }

@@ -3,6 +3,7 @@ import  {
     BlockContainer,
     Wrapper,
     Frame,
+    Inframe,
     Image,
     Img,
     InfoHeading,
@@ -22,6 +23,9 @@ Container.Wrapper = function ContainerWrapper({children, ...restProps}) {
 }
 Container.Frame = function ContainerFrame({children, ...restProps}) {
     return <Frame {...restProps}>{children}</Frame>
+}
+Container.Inframe = function ContainerInframe({children, ...restProps}) {
+    return <Inframe {...restProps}>{children}</Inframe>
 }
 Container.Img = function ContainerImg({...restProps}) {
     return <Img {...restProps}/>

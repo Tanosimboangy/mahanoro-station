@@ -1,38 +1,49 @@
-# Graded Project - Mahanoro Station
-
-![Design preview for the Mahanoro station coding challenge](./design/1.png)
-
-## The challenge
-
-Your challenge is to build out this app and get it working with **redux**, **compound components** and **styled components**, while making it look as close to the design as possible.
-
-This is a website that will allow us to reserve some seats in _"Taxi brousses"_ departing from Mahanoro station.
-
-Your users should be able to:
-
-- Pick a city from the city list
-- See the available trips to that city, and pick one where seats are still availalable
-- Select one or more seats in the car, and see how much it's going to cost
-- Confirm the booking
-- See their confirmed bookings on the 'My account'page
-- Modify their own information, like name or phone number, on that same page.
-
-## Where to find everything
-
-Your task is to build out the project to the designs from this Figma link: https://www.figma.com/file/6gSAJpaedebKAUuaM4ekFR/Mahanoro-Station?node-id=4%3A38
-
-The data from the trips are available on this link : https://gist.githubusercontent.com/Pinois/36bb5fbf9b6a686f0baf4006dd137bca/raw/a40d8b3f696a75f388db286d57bdd05a925fa0e7/trips.json
-
-## Building your project
-
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
-
-1. Initialize your project as a public repository on [GitHub](https://github.com/). This will make it easier to share your code with the community if you need some help. If you're not sure how to do this, [have a read through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a URL. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, but I recommend you to use **Netlify**.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead how your data and reducers will look like.
-
-## Submit your project
-
-You have until **Tuesday** at **15h30** to submit your github link and netlify link on this form : https://forms.gle/ikBWC2MokmdH4jdw6
-
-**Have fun building!** 🚀
+# Mahanoro Station
+ 
+## I have built this App which is about Mahanoro station. Anyone can use this App for the facility of booking seats.
+ 
+### You can follow the brief description about this project, in order to know about what it does, how it works, and how to use it.
+ 
+### Please have a great time while using this App. This is the link to the netlify have a look at it:  
+## ****
+ 
+<h1 align="center">Mahanoro Station</h1>
+ 
+<div align="center">
+  <h3>
+    <a href="https://{https://mahanoro-station-jacquit.netlify.app}">
+      Demo
+    </a>
+    <span> | </span>
+    <a href="https://{https://github.com/Tanosimboangy/mahanoro-station}">
+      Solution
+    </a>
+  </h3>
+</div>
+ 
+# *Overview:*
+ 
+ 
+# *You can see my demo here:*
+- You can see my demo in this following link: [https://mahanoro-station-jacquit.netlify.app/](https://mahanoro-station-jacquit.netlify.app/).
+ 
+# *My experience:*
+ 
+ - Firstly, I fetched all of the data through the given API: [https://gist.githubusercontent.com/Pinois/36bb5fbf9b6a686f0baf4006dd137bca/raw/a40d8b3f696a75f388db286d57bdd05a925fa0e7/trips.json](https://gist.githubusercontent.com/Pinois/36bb5fbf9b6a686f0baf4006dd137bca/raw/a40d8b3f696a75f388db286d57bdd05a925fa0e7/trips.json). While fetching the data from this API, I had a problem with my dependency, because I did not have the browserslist in there, but as soon as I implemented this "browserslist" in my dependency it worked.
+ 
+- Something I did know before but I used during this project was,implementing the font in the GlobalStyles.
+ 
+# *Anything I have learned/improved:*
+ 
+- While doing this project, I learned: firstly, using all the ways to deal with an array, such as spread, map(), and filter().
+ 
+- Apart from that, I started to fully understand more about how to use Redux, as well as style components, and how they work.
+ 
+# *My wisdom:*
+ 
+- In the face of bugs, I tried to do my best to fully understand what is going on before asking for help from google.
+ 
+- I tried to rely on google, I did a lot of research  while fulfilling this task.
+ 
+# *Contact :*
+- ## GitHub [Tanosimboangy](https://github.com/Tanosimboangy)
