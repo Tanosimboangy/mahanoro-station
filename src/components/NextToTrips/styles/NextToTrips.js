@@ -53,17 +53,19 @@ export const Image = styled.img`
     height: auto;
 `;
 export const Day = styled.p`
-
+    color: #FF8906;
 `;
 export const Time = styled.p`
-
+    color: #FF8906;
 `;
 export const Date = styled.p`
 
 `;
 export const Seats = styled.p`
-    span {
-        color: #E53170;
+    div {
+        span {
+            color: #E53170;
+        }
     }
 `;
 export const Button = styled.button`
@@ -79,11 +81,10 @@ export const Button = styled.button`
     border: none;
     outline: none;
 
-    /* & [disabled] {
-        pointer-events: auto! important;
-        cursor: not-allowed! important;
+    &:disabled {
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), #E53170;
-    } */
+        cursor: not-allowed;
+    }
 `;
 
 

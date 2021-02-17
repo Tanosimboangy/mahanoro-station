@@ -21,6 +21,7 @@ function BookingSeats() {
     }, [nextTrips])
 
     function handleSeat(e) {
+        console.log(bookingSeat);
         const chosenSeats = bookingSeat.map(item =>
             item.map(seat => seat)
             // return .seats(seat => seat.id == e.target.id

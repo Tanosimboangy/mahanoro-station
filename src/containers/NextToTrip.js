@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import {format} from 'date-fns';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import  NextToTrip from '../components/NextToTrips';
@@ -12,17 +13,15 @@ function NextToTrips() {
     const nextTrips = useSelector(state => state.nextTrips);
     const nextDestination = data !== [] && data.filter(item => item.destination === destination);
 
+    // Getting the next trip data and store them into the nextrips array
     useEffect(() => {
         dispatch(setNextTrip(nextDestination));
     }, [data])
 
+    // Gettin the number of the seats by its length
     const totalSeatsLeft = (item) => {
         return item.filter(seat => seat.isAvailable).length
     }
-
-    // EEE => day
-    // HH:mm => time
-    // 
 
     return (
         <NextToTrip>
@@ -34,18 +33,25 @@ function NextToTrips() {
                 </div>
             </NextToTrip.Heading>
                 {nextTrips && nextTrips.map(trip => {
+                    const getDate = new Date(trip.departureTime);
+                    const weekday = { weekday: 'long'};
+                    const departureDay = new Intl.DateTimeFormat('en-US', weekday).format(trip.departureTime);
+                    const departureDate = format(getDate, 'MM/dd/yyyy');
+                    const departureTime = format(getDate, "k':'m");
+                    const totalSeatsAvailable = totalSeatsLeft(trip.seats);
                     return (
                         <NextToTrip.Base key={trip.id}>
                             <NextToTrip.Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC7NdbqIz7MkVy7G7CGjhfofoZZSDxyhvWAw&usqp=CAU" alt="car"/>
                             <NextToTrip.Item>
-                                <NextToTrip.Day>{trip.departureTime}</NextToTrip.Day>
-                                {/* <NextToTrip.Day>{new Date(trip.departureTime).toLocaleDateString('en-US', { weekday: 'long' })}</NextToTrip.Day> */}
-                                <NextToTrip.Time>{new Date(trip.departureTime).getHours()}</NextToTrip.Time>
+                                <NextToTrip.Day>{departureDay}</NextToTrip.Day>
+                                <NextToTrip.Time>{departureTime}</NextToTrip.Time>
                             </NextToTrip.Item>
                             <NextToTrip.Item>
-                                <NextToTrip.Date>{new Date(trip.departureTime).toLocaleDateString("en-US")}</NextToTrip.Date>
+                                <NextToTrip.Date>{departureDate}</NextToTrip.Date>
                                 <NextToTrip.Seats>
-                                    { totalSeatsLeft(trip.seats) < 2 ? `${totalSeatsLeft(trip.seats)} seat` : `${totalSeatsLeft(trip.seats)} seats`} left.
+                                    { totalSeatsAvailable > 1 ? 
+                                    `${totalSeatsAvailable} seats`:
+                                    `${totalSeatsAvailable} seat`} left.
                                 </NextToTrip.Seats>
                             </NextToTrip.Item>
                             <NextToTrip.Item>
