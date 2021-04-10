@@ -29,9 +29,7 @@
  
 # *My experience:*
  
- - Firstly, I fetched all of the data through the given API: [https://gist.githubusercontent.com/Pinois/36bb5fbf9b6a686f0baf4006dd137bca/raw/a40d8b3f696a75f388db286d57bdd05a925fa0e7/trips.json](https://gist.githubusercontent.com/Pinois/36bb5fbf9b6a686f0baf4006dd137bca/raw/a40d8b3f696a75f388db286d57bdd05a925fa0e7/trips.json). While fetching the data from this API, I had a problem with my dependency, because I did not have the browserslist in there, but as soon as I implemented this "browserslist" in my dependency it worked.
- 
-- Something I did know before but I used during this project was,implementing the font in the GlobalStyles.
+ - I fetched all of the data through this given API: [https://gist.githubusercontent.com/Pinois/36bb5fbf9b6a686f0baf4006dd137bca/raw/a40d8b3f696a75f388db286d57bdd05a925fa0e7/trips.json](https://gist.githubusercontent.com/Pinois/36bb5fbf9b6a686f0baf4006dd137bca/raw/a40d8b3f696a75f388db286d57bdd05a925fa0e7/trips.json). 
  
 # *Anything I have learned/improved:*
  
