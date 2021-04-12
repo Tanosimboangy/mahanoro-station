@@ -39067,9 +39067,9 @@ var _default = {
   pickSeats: [],
   showModal: false,
   account: {
-    firstName: "Tojo",
-    lastName: "Nomena",
-    phoneNumber: "0342333343",
+    firstName: 'Jacquit',
+    lastName: 'Francois',
+    phoneNumber: '0344605298',
     myBookings: []
   }
 };
@@ -39378,89 +39378,90 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.header`
-    background: #0F0E17;
-    margin-bottom: 55px;
-    padding-top: 28px;
-    padding-bottom: 28px;
-    padding-left: 32px;
-    padding-right: 32px;
+  background: #0f0e17;
+  margin-bottom: 55px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  padding-left: 32px;
+  padding-right: 32px;
 
-    @media(min-width: 1114px) {
-        padding-left: 0;
-        padding-right: 0;
-    }
+  @media (min-width: 1114px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 `;
 exports.Container = Container;
 const HeaderContainer = _styledComponents.default.div`
-    max-width: 1114px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  max-width: 1114px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 exports.HeaderContainer = HeaderContainer;
 const HeadingContainer = _styledComponents.default.div`
-    display: flex; 
+  display: flex;
 `;
 exports.HeadingContainer = HeadingContainer;
 const Title = _styledComponents.default.h1`
-    font-weight: normal;
-    font-size: 36px;
-    line-height: 43px;
-    /* identical to box height */
-    color: #FFFFFE;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  a {
+    color: #a7a9be;
+  }
 `;
 exports.Title = Title;
 const Logo = _styledComponents.default.img`
-    width: 35px;
-    height: 41px;
-    margin-top: 23px;
-    margin-right: 30px;
+  width: 35px;
+  height: 41px;
+  margin-top: 23px;
+  margin-right: 30px;
 `;
 exports.Logo = Logo;
 const LinkContainer = _styledComponents.default.div`
-    padding-top: 28px;
-    padding-bottom: 28px;
+  padding-top: 28px;
+  padding-bottom: 28px;
 
-    a {
-        font-weight: normal;
-        font-size: 24px;
-        line-height: 28px;
-        color: #A7A9BE;
-    }
+  a {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #a7a9be;
+  }
 `;
 exports.LinkContainer = LinkContainer;
 const Link = _styledComponents.default.a``;
 exports.Link = Link;
 const PageTitle = _styledComponents.default.h2`
-    font-style: normal;
-    font-weight: bold;
-    word-wrap: break-word ;
-    font-size: 64px;
-    line-height: 76px;
-    /* identical to box height */
-    color: #000000;
+  font-style: normal;
+  font-weight: bold;
+  word-wrap: break-word;
+  font-size: 64px;
+  line-height: 76px;
+  /* identical to box height */
+  color: #000000;
 `;
 exports.PageTitle = PageTitle;
 const Span = _styledComponents.default.span`
-    font-weight: 300;
-    font-size: 64px;
-    line-height: 76px;
-    color: #E53170;
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 76px;
+  color: #e53170;
 `;
 exports.Span = Span;
 const PageTitleContainer = _styledComponents.default.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-    img {
-        width: 118px;
-        height: 118px;
-        margin-top: 67px;
-        margin-right: 55px;
-    }
+  img {
+    width: 118px;
+    height: 118px;
+    margin-top: 67px;
+    margin-right: 55px;
+  }
 `;
 exports.PageTitleContainer = PageTitleContainer;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/header/index.js":[function(require,module,exports) {
@@ -40074,113 +40075,114 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
-    max-width: 1114px;
-    margin-left: auto;
-    margin-right: auto;
-    display: grid;
-    justify-content: center;
-    padding-left: 16px;
-    padding-right: 16px;
+  max-width: 1114px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  justify-content: center;
+  padding-left: 16px;
+  padding-right: 16px;
 
-    @media(min-width: 1114px) {
-        grid-template-columns: 35% auto;
-        column-gap: 76px;
-        justify-content: unset;
-    }
+  @media (min-width: 1114px) {
+    grid-template-columns: 35% auto;
+    column-gap: 76px;
+    justify-content: unset;
+  }
 `;
 exports.Container = Container;
 const HeadingContainer = _styledComponents.default.div`
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    img {
-        width: 134px;
-        height: 134px;
-        margin-top: 60px;
-        margin-right: 80px;
-    }
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  img {
+    width: 134px;
+    height: 134px;
+    margin-top: 60px;
+    margin-right: 80px;
+  }
 `;
 exports.HeadingContainer = HeadingContainer;
 const Frame = _styledComponents.default.div``;
 exports.Frame = Frame;
 const Subtitle = _styledComponents.default.h2`
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #0F0E17;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0f0e17;
 `;
 exports.Subtitle = Subtitle;
 const Form = _styledComponents.default.form``;
 exports.Form = Form;
 const Label = _styledComponents.default.label`
-    display: block;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    /* identical to box height */
-    color: #0F0E17;
+  display: block;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #0f0e17;
 `;
 exports.Label = Label;
 const Input = _styledComponents.default.input`
-    background: #000000;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    color: #FF8906;
-    padding-top: 28px;
-    padding-bottom: 28px;
-    padding-left: 22px;
+  background: #000000;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  color: #ff8906;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 20px;
+  outline: none;
+  border: none;
+  margin-bottom: 10px;
 `;
 exports.Input = Input;
 const Button = _styledComponents.default.button`
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    background: #E53170;
-    color: #FFFFFF;
-    margin-top: 42px;
-    padding-top: 28px;
-    padding-bottom: 28px; 
-    padding-left: 32px;
-    padding-right: 32px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  background: #e53170;
+  color: #ffffff;
+  margin-top: 30px;
+  padding: 16px;
+  border-radius: 10px;
+  border: none;
 `;
 exports.Button = Button;
 const GroupContainer = _styledComponents.default.div`
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 exports.GroupContainer = GroupContainer;
 const Group = _styledComponents.default.div``;
 exports.Group = Group;
 const Image = _styledComponents.default.img`
-    width: 65px;
-    height: 65px;
+  width: 65px;
+  height: 65px;
 `;
 exports.Image = Image;
 const Span = _styledComponents.default.span`
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    padding: 0;
-    color: #000000;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  padding: 0;
+  color: #000000;
 `;
 exports.Span = Span;
 const CancelButton = _styledComponents.default.button`
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    background: #E53170;
-    color: #FFFFFF;
-    background: #FF8906;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 12px;
-    padding-right: 12px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  background: #e53170;
+  color: #ffffff;
+  background: #ff8906;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 12px;
+  padding-right: 12px;
 `;
 exports.CancelButton = CancelButton;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/account/index.js":[function(require,module,exports) {
@@ -41049,7 +41051,9 @@ function HeaderContainer() {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.HeaderContainer, null, /*#__PURE__*/_react.default.createElement(_components.Header.HeadingContainer, null, /*#__PURE__*/_react.default.createElement(_components.Header.Logo, {
     src: _logo.default,
     alt: "logo"
-  }), /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, "Mahanoro station")), /*#__PURE__*/_react.default.createElement(_components.Header.LinkContainer, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }), /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/"
+  }, "Mahanoro station"))), /*#__PURE__*/_react.default.createElement(_components.Header.LinkContainer, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/account/:accountId"
   }, "My account")))));
 }
@@ -41136,7 +41140,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63051" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49552" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

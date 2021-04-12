@@ -1,13 +1,13 @@
 export default {
-    trips: [],
-    nextTrips: [],
-    bookingSeats: [],
-    pickSeats: [], 
-    showModal: false,
-    account: {
-        firstName: "Tojo",
-        lastName: "Nomena",
-        phoneNumber: "0342333343",
-        myBookings: []
-    }
+  trips: [],
+  nextTrips: [],
+  bookingSeats: [],
+  pickSeats: [],
+  showModal: false,
+  account: {
+    firstName: 'Jacquit',
+    lastName: 'Francois',
+    phoneNumber: '0344605298',
+    myBookings: [],
+  },
 }
