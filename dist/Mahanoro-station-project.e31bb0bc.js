@@ -39023,6 +39023,9 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
         span {
             display: block;
         }
+        h1, h2, h3, h4, h5, h6, p {
+            margin: 0;
+        }
     }`;
 exports.GlobalStyles = GlobalStyles;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"node_modules/redux-thunk/es/index.js":[function(require,module,exports) {
@@ -39379,9 +39382,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const Container = _styledComponents.default.header`
   background: #0f0e17;
-  margin-bottom: 55px;
-  padding-top: 28px;
-  padding-bottom: 28px;
+  margin-bottom: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   padding-left: 32px;
   padding-right: 32px;
 
@@ -39402,11 +39405,13 @@ const HeaderContainer = _styledComponents.default.div`
 exports.HeaderContainer = HeaderContainer;
 const HeadingContainer = _styledComponents.default.div`
   display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 exports.HeadingContainer = HeadingContainer;
 const Title = _styledComponents.default.h1`
   font-weight: normal;
-  font-size: 36px;
+  font-size: 30px;
   line-height: 43px;
   a {
     color: #a7a9be;
@@ -39416,8 +39421,7 @@ exports.Title = Title;
 const Logo = _styledComponents.default.img`
   width: 35px;
   height: 41px;
-  margin-top: 23px;
-  margin-right: 30px;
+  margin-right: 10px;
 `;
 exports.Logo = Logo;
 const LinkContainer = _styledComponents.default.div`
@@ -39438,10 +39442,11 @@ const PageTitle = _styledComponents.default.h2`
   font-style: normal;
   font-weight: bold;
   word-wrap: break-word;
-  font-size: 64px;
-  line-height: 76px;
-  /* identical to box height */
+  font-size: 54px;
+  line-height: 66px;
   color: #000000;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 exports.PageTitle = PageTitle;
 const Span = _styledComponents.default.span`
@@ -39457,9 +39462,9 @@ const PageTitleContainer = _styledComponents.default.div`
   justify-content: center;
 
   img {
-    width: 118px;
-    height: 118px;
-    margin-top: 67px;
+    width: 80px;
+    height: 80px;
+    margin-top: 0px;
     margin-right: 55px;
   }
 `;
@@ -39564,50 +39569,49 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
-    display: grid;
-    justify-content: center;
-    @media(min-width: 1114px) {
-        grid-template-columns: auto auto;
-        column-gap: 82px;
-        row-gap: 38px;
-    }
+  display: grid;
+  justify-content: center;
+  @media (min-width: 1114px) {
+    grid-template-columns: auto auto;
+    column-gap: 82px;
+    row-gap: 38px;
+  }
 `;
 exports.Container = Container;
 const HeaderContainer = _styledComponents.default.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 55px;
-    img {
-        width: 128px;
-        height: 128px;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 55px;
+  img {
+    width: 80px;
+    height: 80px;
+  }
 `;
 exports.HeaderContainer = HeaderContainer;
 const CityNameContainer = _styledComponents.default.div`
-    display: flex;
-    background-color: #000000;
-    margin-bottom: 32px;
-    padding-left: 32px;
-    padding-right: 32px;
+  display: flex;
+  background-color: #000000;
+  margin-bottom: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
 `;
 exports.CityNameContainer = CityNameContainer;
 const Icon = _styledComponents.default.img`
-    width: 34px;
-    height: 36px;
-    margin-top: 32px;
-    margin-right: 31px;
+  width: 34px;
+  height: 36px;
+  margin-top: 10px;
+  margin-right: 31px;
 `;
 exports.Icon = Icon;
 const CityName = _styledComponents.default.p`
-    font-family: Rubik;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 36px;
-    line-height: 43px;
-    /* identical to box height */
-    text-transform: uppercase;
-    color: #FFFFFF;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  text-transform: uppercase;
+  color: #ffffff;
 `;
 exports.CityName = CityName;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/trips/index.js":[function(require,module,exports) {
@@ -41140,7 +41144,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49552" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61324" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

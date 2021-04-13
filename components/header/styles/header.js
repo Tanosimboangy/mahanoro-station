@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 const Container = styled.header`
   background: #0f0e17;
-  margin-bottom: 55px;
-  padding-top: 28px;
-  padding-bottom: 28px;
+  margin-bottom: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   padding-left: 32px;
   padding-right: 32px;
 
@@ -25,11 +25,13 @@ const HeaderContainer = styled.div`
 
 const HeadingContainer = styled.div`
   display: flex;
+  flex-direction: row;
+  align-items: center;
 `
 
 const Title = styled.h1`
   font-weight: normal;
-  font-size: 36px;
+  font-size: 30px;
   line-height: 43px;
   a {
     color: #a7a9be;
@@ -38,8 +40,7 @@ const Title = styled.h1`
 const Logo = styled.img`
   width: 35px;
   height: 41px;
-  margin-top: 23px;
-  margin-right: 30px;
+  margin-right: 10px;
 `
 const LinkContainer = styled.div`
   padding-top: 28px;
@@ -58,10 +59,11 @@ const PageTitle = styled.h2`
   font-style: normal;
   font-weight: bold;
   word-wrap: break-word;
-  font-size: 64px;
-  line-height: 76px;
-  /* identical to box height */
+  font-size: 54px;
+  line-height: 66px;
   color: #000000;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `
 
 const Span = styled.span`
@@ -77,9 +79,9 @@ const PageTitleContainer = styled.div`
   justify-content: center;
 
   img {
-    width: 118px;
-    height: 118px;
-    margin-top: 67px;
+    width: 80px;
+    height: 80px;
+    margin-top: 0px;
     margin-right: 55px;
   }
 `

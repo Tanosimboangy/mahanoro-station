@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
     html, body {
@@ -18,4 +18,7 @@ export const GlobalStyles = createGlobalStyle`
         span {
             display: block;
         }
-    }`;
+        h1, h2, h3, h4, h5, h6, p {
+            margin: 0;
+        }
+    }`
