@@ -24,9 +24,15 @@ const HeaderContainer = styled.div`
 const CityNameContainer = styled.div`
   display: flex;
   background-color: #000000;
-  margin-bottom: 32px;
-  padding-left: 32px;
-  padding-right: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  @media (max-width: 420px) {
+    padding: 10px 18px;
+    flex-wrap: wrap;
+  }
 `
 
 const Icon = styled.img`
@@ -44,6 +50,10 @@ const CityName = styled.p`
   line-height: 43px;
   text-transform: uppercase;
   color: #ffffff;
+  @media (max-width: 420px) {
+    font-size: 22px;
+    line-height: 30px;
+  }
 `
 
 export { Container, HeaderContainer, CityNameContainer, Icon, CityName }

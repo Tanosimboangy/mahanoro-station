@@ -39592,9 +39592,15 @@ exports.HeaderContainer = HeaderContainer;
 const CityNameContainer = _styledComponents.default.div`
   display: flex;
   background-color: #000000;
-  margin-bottom: 32px;
-  padding-left: 32px;
-  padding-right: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  @media (max-width: 420px) {
+    padding: 10px 18px;
+    flex-wrap: wrap;
+  }
 `;
 exports.CityNameContainer = CityNameContainer;
 const Icon = _styledComponents.default.img`
@@ -39612,6 +39618,10 @@ const CityName = _styledComponents.default.p`
   line-height: 43px;
   text-transform: uppercase;
   color: #ffffff;
+  @media (max-width: 420px) {
+    font-size: 22px;
+    line-height: 30px;
+  }
 `;
 exports.CityName = CityName;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/trips/index.js":[function(require,module,exports) {
@@ -41144,7 +41154,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61324" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57453" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
