@@ -3,51 +3,56 @@ import styled from 'styled-components'
 const Container = styled.header`
   background: #0f0e17;
   margin-bottom: 20px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 32px;
-  padding-right: 32px;
-
-  @media (min-width: 1114px) {
-    padding-left: 0;
+  padding-top: 28px;
+  padding-bottom: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+  @media (min-width: 1330px) {
     padding-right: 0;
+    padding-left: 0;
   }
 `
 
 const HeaderContainer = styled.div`
-  max-width: 1114px;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  @media (min-width: 720px) {
+    max-width: 1290px;
+    margin: auto;
+  }
 `
 
 const HeadingContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 `
 
 const Title = styled.h1`
   font-weight: normal;
-  font-size: 30px;
+  font-style: normal;
+  font-size: 36px;
   line-height: 43px;
   a {
-    color: #a7a9be;
+    color: #fffffe;
+  }
+  @media (max-width: 540px) {
+    font-size: 26px;
+    line-height: 30px;
   }
 `
 const Logo = styled.img`
   width: 35px;
   height: 41px;
-  margin-right: 10px;
+  margin-right: 30px;
 `
 const LinkContainer = styled.div`
-  padding-top: 28px;
-  padding-bottom: 28px;
-
   a {
     font-weight: normal;
+    font-style: normal;
     font-size: 24px;
     line-height: 28px;
     color: #a7a9be;
