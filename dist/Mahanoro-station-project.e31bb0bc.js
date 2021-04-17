@@ -39469,6 +39469,7 @@ const PageTitleContainer = _styledComponents.default.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   margin-top: 80px;
   margin-bottom: 80px;
 
@@ -39714,6 +39715,7 @@ const Container = _styledComponents.default.div`
   justify-content: space-between;
   margin-left: 5%;
   margin-right: 5%;
+  margin-bottom: 30px;
 
   @media (min-width: 600px) {
     display: flex;
@@ -39727,7 +39729,9 @@ const Container = _styledComponents.default.div`
   }
 `;
 exports.Container = Container;
-const Frame = _styledComponents.default.div``;
+const Frame = _styledComponents.default.div`
+  margin-top: 20px;
+`;
 exports.Frame = Frame;
 const Image = _styledComponents.default.img`
   width: 70px;
@@ -39736,22 +39740,30 @@ const Image = _styledComponents.default.img`
 exports.Image = Image;
 const Day = _styledComponents.default.span`
   font-weight: normal;
-  font-size: 36px;
-  line-height: 43px;
+  font-size: 28px;
+  line-height: 36px;
   color: #ff8906;
 `;
 exports.Day = Day;
 const Time = _styledComponents.default.span`
-  ${Day}
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 36px;
+  color: #ff8906;
 `;
 exports.Time = Time;
 const Date = _styledComponents.default.span`
-  ${Day};
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 36px;
   color: #000000;
 `;
 exports.Date = Date;
 const SeatsInfo = _styledComponents.default.span`
-  ${Date}
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 36px;
+  color: #000000;
 `;
 exports.SeatsInfo = SeatsInfo;
 const ButtonContainer = _styledComponents.default.div`
@@ -39760,15 +39772,16 @@ const ButtonContainer = _styledComponents.default.div`
 `;
 exports.ButtonContainer = ButtonContainer;
 const Button = _styledComponents.default.button`
-  ${Day};
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
   background: #e53170;
-  margin-bottom: 32px;
-  padding-top: 31px;
-  padding-bottom: 31px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   color: #ffffff;
-  border: transparent;
+  border: none;
 `;
 exports.Button = Button;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/nextTrips/index.js":[function(require,module,exports) {

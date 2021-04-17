@@ -8,6 +8,7 @@ const Container = styled.div`
   justify-content: space-between;
   margin-left: 5%;
   margin-right: 5%;
+  margin-bottom: 30px;
 
   @media (min-width: 600px) {
     display: flex;
@@ -21,43 +22,54 @@ const Container = styled.div`
   }
 `
 
-const Frame = styled.div``
+const Frame = styled.div`
+  margin-top: 20px;
+`
 const Image = styled.img`
   width: 70px;
   height: 70px;
 `
 const Day = styled.span`
   font-weight: normal;
-  font-size: 36px;
-  line-height: 43px;
+  font-size: 28px;
+  line-height: 36px;
   color: #ff8906;
 `
 
 const Time = styled.span`
-  ${Day}
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 36px;
+  color: #ff8906;
 `
 const Date = styled.span`
-  ${Day};
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 36px;
   color: #000000;
 `
 
 const SeatsInfo = styled.span`
-  ${Date}
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 36px;
+  color: #000000;
 `
 const ButtonContainer = styled.div`
   background: #e53170;
   margin-bottom: 32px;
 `
 const Button = styled.button`
-  ${Day};
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
   background: #e53170;
-  margin-bottom: 32px;
-  padding-top: 31px;
-  padding-bottom: 31px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   color: #ffffff;
-  border: transparent;
+  border: none;
 `
 
 export {
