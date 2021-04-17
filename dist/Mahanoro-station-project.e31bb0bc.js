@@ -40143,6 +40143,7 @@ const Container = _styledComponents.default.div`
   justify-content: center;
   padding-left: 16px;
   padding-right: 16px;
+  margin-bottom: 30px;
 
   @media (min-width: 1114px) {
     grid-template-columns: 35% auto;
@@ -40154,12 +40155,14 @@ exports.Container = Container;
 const HeadingContainer = _styledComponents.default.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  margin-top: 80px;
+  margin-bottom: 80px;
   img {
-    width: 134px;
-    height: 134px;
-    margin-top: 60px;
-    margin-right: 80px;
+    width: 96px;
+    height: 96px;
+    margin-right: 70px;
   }
 `;
 exports.HeadingContainer = HeadingContainer;
@@ -40206,7 +40209,6 @@ const Button = _styledComponents.default.button`
   color: #ffffff;
   margin-top: 30px;
   padding: 16px;
-  border-radius: 10px;
   border: none;
 `;
 exports.Button = Button;
