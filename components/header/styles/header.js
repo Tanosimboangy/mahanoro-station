@@ -60,25 +60,34 @@ const LinkContainer = styled.div`
 const Link = styled.a``
 
 const PageTitle = styled.h2`
-  word-wrap: break-word;
   font-size: 54px;
   line-height: 66px;
   font-style: normal;
   font-weight: bold;
   color: #000000;
+  @media (max-width: 350px) {
+    font-size: 35px;
+    line-height: 42px;
+  }
 `
 
 const Span = styled.span`
   font-weight: 300;
-  font-size: 64px;
-  line-height: 76px;
+  font-size: 54px;
+  line-height: 66px;
   color: #e53170;
+  @media (max-width: 350px) {
+    font-size: 35px;
+    line-height: 42px;
+  }
 `
 
 const PageTitleContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
 
   img {
     width: 80px;

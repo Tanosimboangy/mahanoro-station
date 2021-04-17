@@ -39443,25 +39443,34 @@ exports.LinkContainer = LinkContainer;
 const Link = _styledComponents.default.a``;
 exports.Link = Link;
 const PageTitle = _styledComponents.default.h2`
-  word-wrap: break-word;
   font-size: 54px;
   line-height: 66px;
   font-style: normal;
   font-weight: bold;
   color: #000000;
+  @media (max-width: 350px) {
+    font-size: 35px;
+    line-height: 42px;
+  }
 `;
 exports.PageTitle = PageTitle;
 const Span = _styledComponents.default.span`
   font-weight: 300;
-  font-size: 64px;
-  line-height: 76px;
+  font-size: 54px;
+  line-height: 66px;
   color: #e53170;
+  @media (max-width: 350px) {
+    font-size: 35px;
+    line-height: 42px;
+  }
 `;
 exports.Span = Span;
 const PageTitleContainer = _styledComponents.default.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
 
   img {
     width: 80px;
@@ -39698,59 +39707,68 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
-        display: grid;
-        justify-content: center;
-        
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
 
-    @media(min-width: 1114px){
-        max-width: 1114px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-right: 16px;
-        padding-left: 16px;
-        display: flex;
-        justify-content: space-between;
-    }
+  @media (min-width: 600px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  @media (min-width: 1000px) {
+    max-width: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 `;
 exports.Container = Container;
 const Frame = _styledComponents.default.div``;
 exports.Frame = Frame;
 const Image = _styledComponents.default.img`
-    width: 93px;
-    height: 93px;
+  width: 70px;
+  height: 70px;
 `;
 exports.Image = Image;
 const Day = _styledComponents.default.span`
-    font-weight: normal;
-    font-size: 36px;
-    line-height: 43px;
-    color: #FF8906
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  color: #ff8906;
 `;
 exports.Day = Day;
-const Time = _styledComponents.default.span`${Day}`;
+const Time = _styledComponents.default.span`
+  ${Day}
+`;
 exports.Time = Time;
 const Date = _styledComponents.default.span`
-    ${Day};
-    color: #000000;
+  ${Day};
+  color: #000000;
 `;
 exports.Date = Date;
-const SeatsInfo = _styledComponents.default.span`${Date}`;
+const SeatsInfo = _styledComponents.default.span`
+  ${Date}
+`;
 exports.SeatsInfo = SeatsInfo;
 const ButtonContainer = _styledComponents.default.div`
-    background: #E53170;
-    margin-bottom: 32px;
+  background: #e53170;
+  margin-bottom: 32px;
 `;
 exports.ButtonContainer = ButtonContainer;
 const Button = _styledComponents.default.button`
-    ${Day}; 
-    background: #E53170;
-    margin-bottom: 32px;
-    padding-top: 31px;
-    padding-bottom: 31px;
-    padding-left: 25px;
-    padding-right: 25px;
-    color: #FFFFFF;
-    border: transparent;
+  ${Day};
+  background: #e53170;
+  margin-bottom: 32px;
+  padding-top: 31px;
+  padding-bottom: 31px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: #ffffff;
+  border: transparent;
 `;
 exports.Button = Button;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/nextTrips/index.js":[function(require,module,exports) {
