@@ -39594,7 +39594,6 @@ exports.HeaderContainer = HeaderContainer;
 const CityNameContainer = _styledComponents.default.div`
   background-color: #000000;
   margin-bottom: 16px;
-  padding: 16px 24px;
   @media (max-width: 420px) {
     padding: 10px 18px;
   }
@@ -39604,6 +39603,7 @@ const Base = _styledComponents.default.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  padding: 16px 24px;
 `;
 exports.Base = Base;
 const Icon = _styledComponents.default.img`

@@ -25,7 +25,6 @@ const HeaderContainer = styled.div`
 const CityNameContainer = styled.div`
   background-color: #000000;
   margin-bottom: 16px;
-  padding: 16px 24px;
   @media (max-width: 420px) {
     padding: 10px 18px;
   }
@@ -35,6 +34,7 @@ const Base = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  padding: 16px 24px;
 `
 
 const Icon = styled.img`
