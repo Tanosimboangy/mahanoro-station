@@ -39563,7 +39563,7 @@ Header.PageTitle = function HeaderPageTitle({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CityName = exports.Icon = exports.CityNameContainer = exports.HeaderContainer = exports.Container = void 0;
+exports.CityName = exports.Icon = exports.Base = exports.CityNameContainer = exports.HeaderContainer = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -39592,11 +39592,7 @@ const HeaderContainer = _styledComponents.default.div`
 `;
 exports.HeaderContainer = HeaderContainer;
 const CityNameContainer = _styledComponents.default.div`
-  display: flex;
   background-color: #000000;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
   margin-bottom: 16px;
   padding: 16px 24px;
   @media (max-width: 420px) {
@@ -39604,6 +39600,12 @@ const CityNameContainer = _styledComponents.default.div`
   }
 `;
 exports.CityNameContainer = CityNameContainer;
+const Base = _styledComponents.default.div`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+`;
+exports.Base = Base;
 const Icon = _styledComponents.default.img`
   width: 34px;
   height: 36px;
@@ -39652,6 +39654,13 @@ Trips.HeaderContainer = function TripsHeaderContainer({
   restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_trips.HeaderContainer, restProps, children);
+};
+
+Trips.Base = function TripsBase({
+  children,
+  restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_trips.Base, restProps, children);
 };
 
 Trips.CityNameContainer = function TripsCityNameContainer({
@@ -40594,12 +40603,12 @@ function HomeContainer() {
   const cityNamesEl = trips !== [] && removeDuplicatedCityNames.map(destination => {
     return /*#__PURE__*/_react.default.createElement(_components.Trips.CityNameContainer, {
       key: destination
-    }, /*#__PURE__*/_react.default.createElement(_components.Trips.Icon, {
+    }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      to: `/city/${destination}`
+    }, /*#__PURE__*/_react.default.createElement(_components.Trips.Base, null, /*#__PURE__*/_react.default.createElement(_components.Trips.Icon, {
       src: _thumbsUp.default,
       alt: "thumbs up icon"
-    }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-      to: `/city/${destination}`
-    }, /*#__PURE__*/_react.default.createElement(_components.Trips.CityName, null, destination)));
+    }), /*#__PURE__*/_react.default.createElement(_components.Trips.CityName, null, destination))));
   });
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_components.Trips.HeaderContainer, null, /*#__PURE__*/_react.default.createElement(_components.Trips.Icon, {
     src: _taxiBrousse.default,

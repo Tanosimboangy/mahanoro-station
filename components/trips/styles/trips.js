@@ -23,16 +23,18 @@ const HeaderContainer = styled.div`
 `
 
 const CityNameContainer = styled.div`
-  display: flex;
   background-color: #000000;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
   margin-bottom: 16px;
   padding: 16px 24px;
   @media (max-width: 420px) {
     padding: 10px 18px;
   }
+`
+
+const Base = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 `
 
 const Icon = styled.img`
@@ -55,4 +57,4 @@ const CityName = styled.p`
   }
 `
 
-export { Container, HeaderContainer, CityNameContainer, Icon, CityName }
+export { Container, HeaderContainer, CityNameContainer, Base, Icon, CityName }
