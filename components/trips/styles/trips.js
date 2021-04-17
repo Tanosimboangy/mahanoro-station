@@ -31,7 +31,6 @@ const CityNameContainer = styled.div`
   padding: 16px 24px;
   @media (max-width: 420px) {
     padding: 10px 18px;
-    flex-wrap: wrap;
   }
 `
 

@@ -39599,7 +39599,6 @@ const CityNameContainer = _styledComponents.default.div`
   padding: 16px 24px;
   @media (max-width: 420px) {
     padding: 10px 18px;
-    flex-wrap: wrap;
   }
 `;
 exports.CityNameContainer = CityNameContainer;
@@ -41154,7 +41153,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57453" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49699" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
