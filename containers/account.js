@@ -25,10 +25,10 @@ export default function AccountContainer() {
         <React.Fragment>
             <Account.HeadingContainer>
                 <Account.Image src={userPhoto} alt="user photo"/>
-            <Header.PageTitle>
-                My account 
-                <Header.Span>{account.firstName} {account.lastName}</Header.Span>
-            </Header.PageTitle>
+                <Header.PageTitle>
+                    My account 
+                    <Header.Span>{account.firstName} {account.lastName}</Header.Span>
+                </Header.PageTitle>
             </Account.HeadingContainer>
             <Account>
                 <Account.Frame>
