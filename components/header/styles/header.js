@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 const Container = styled.header`
   background: #0f0e17;
-  margin-bottom: 20px;
   padding-top: 28px;
   padding-bottom: 30px;
   padding-right: 20px;
@@ -61,14 +60,12 @@ const LinkContainer = styled.div`
 const Link = styled.a``
 
 const PageTitle = styled.h2`
-  font-style: normal;
-  font-weight: bold;
   word-wrap: break-word;
   font-size: 54px;
   line-height: 66px;
+  font-style: normal;
+  font-weight: bold;
   color: #000000;
-  margin-top: 10px;
-  margin-bottom: 10px;
 `
 
 const Span = styled.span`
@@ -86,8 +83,7 @@ const PageTitleContainer = styled.div`
   img {
     width: 80px;
     height: 80px;
-    margin-top: 0px;
-    margin-right: 55px;
+    margin-right: 52px;
   }
 `
 

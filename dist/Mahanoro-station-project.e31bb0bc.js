@@ -39382,7 +39382,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const Container = _styledComponents.default.header`
   background: #0f0e17;
-  margin-bottom: 20px;
   padding-top: 28px;
   padding-bottom: 30px;
   padding-right: 20px;
@@ -39444,14 +39443,12 @@ exports.LinkContainer = LinkContainer;
 const Link = _styledComponents.default.a``;
 exports.Link = Link;
 const PageTitle = _styledComponents.default.h2`
-  font-style: normal;
-  font-weight: bold;
   word-wrap: break-word;
   font-size: 54px;
   line-height: 66px;
+  font-style: normal;
+  font-weight: bold;
   color: #000000;
-  margin-top: 10px;
-  margin-bottom: 10px;
 `;
 exports.PageTitle = PageTitle;
 const Span = _styledComponents.default.span`
@@ -39469,8 +39466,7 @@ const PageTitleContainer = _styledComponents.default.div`
   img {
     width: 80px;
     height: 80px;
-    margin-top: 0px;
-    margin-right: 55px;
+    margin-right: 52px;
   }
 `;
 exports.PageTitleContainer = PageTitleContainer;
@@ -39587,7 +39583,8 @@ const HeaderContainer = _styledComponents.default.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 55px;
+  margin-top: 80px;
+  margin-bottom: 80px;
   img {
     width: 80px;
     height: 80px;
@@ -39610,16 +39607,15 @@ exports.CityNameContainer = CityNameContainer;
 const Icon = _styledComponents.default.img`
   width: 34px;
   height: 36px;
-  margin-top: 10px;
-  margin-right: 31px;
+  margin-top: 0;
+  margin-right: 52px;
 `;
 exports.Icon = Icon;
 const CityName = _styledComponents.default.p`
-  font-family: Rubik;
   font-style: normal;
   font-weight: normal;
-  font-size: 36px;
-  line-height: 43px;
+  font-size: 30px;
+  line-height: 35px;
   text-transform: uppercase;
   color: #ffffff;
   @media (max-width: 420px) {

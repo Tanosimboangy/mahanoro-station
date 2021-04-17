@@ -14,7 +14,8 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 55px;
+  margin-top: 80px;
+  margin-bottom: 80px;
   img {
     width: 80px;
     height: 80px;
@@ -37,16 +38,15 @@ const CityNameContainer = styled.div`
 const Icon = styled.img`
   width: 34px;
   height: 36px;
-  margin-top: 10px;
-  margin-right: 31px;
+  margin-top: 0;
+  margin-right: 52px;
 `
 
 const CityName = styled.p`
-  font-family: Rubik;
   font-style: normal;
   font-weight: normal;
-  font-size: 36px;
-  line-height: 43px;
+  font-size: 30px;
+  line-height: 35px;
   text-transform: uppercase;
   color: #ffffff;
   @media (max-width: 420px) {
